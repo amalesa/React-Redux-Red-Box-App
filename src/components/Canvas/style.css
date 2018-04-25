@@ -1,21 +1,26 @@
 .canvas{
     display: flex;
+    flex-direction: column;
     align-items: right;
     font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
 }
 .canvas-board{
     border: 5px #26282E solid;
     width: 70%;
     height: 90vh;
     margin-right: 1em; 
+    position: relative;
+    overflow: hidden;
 }
 .controll-pannel{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .button {
-    margin: 0 0 1em 0;
+    margin: 0.1em;
     border-radius: 0.1em;
     padding: 0.5em 1em;
     background-color: #4CAF50;
@@ -25,8 +30,7 @@
 
 .red-box-container{
     color:26282E;
-    position: relative;
-    position:absolute
+    position: absolute;
 }
 
 .button:action{
@@ -37,4 +41,5 @@
     background: #EB4769;
     height:10px;
     width:10px;
+    position: relative;
 }

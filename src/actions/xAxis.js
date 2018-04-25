@@ -1,10 +1,12 @@
 import * as constants from './constants';
 
-export const addXaxis = () => ({
+export const addXaxis = width => ({
   type: constants.ADD_X_AXIS,
+  width
 });
 
-export const minusXaxis = () => ({
+export const minusXaxis = width => ({
   type: constants.MINUS_X_AXIS,
+  width
 });
 

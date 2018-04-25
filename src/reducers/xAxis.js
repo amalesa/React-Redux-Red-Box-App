@@ -7,10 +7,10 @@ const xAxisValue = (state = 0, action) => {
   let xAxisValue;
   switch (action.type) {
     case constants.ADD_X_AXIS:
-      xAxisValue = state + 10;
+      xAxisValue = (state + 10) > (action.width - 10) ? state : state + 10;
       break;
     case constants.MINUS_X_AXIS:
-      xAxisValue = state - 10;
+      xAxisValue = (state - 10) < 0 ? 0 : state - 10;
       break;
     default:
       xAxisValue = parseInt(read_cookie(X_AXIS_COOKIE), 10) || state;
