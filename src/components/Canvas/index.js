@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addYaxis, minusYaxis } from '../../actions/yAxis';
-import { addXaxis, minusXaxis } from '../../actions/xAxis';
+import { addYaxis, minusYaxis,resizeYaxis } from '../../actions/yAxis';
+import { addXaxis, minusXaxis, resizeXaxis } from '../../actions/xAxis';
 import { RedBox } from './redBox';
 
 export class Canvas extends Component {
@@ -14,6 +14,9 @@ export class Canvas extends Component {
   }
 
     updateDimensions() {
+        this.resizeXaxis();
+         this.resizeYaxis();
+
         this.setState({
           width:this.refs.canvas.clientWidth,
           height:this.refs.canvas.clientHeight
@@ -23,7 +26,7 @@ export class Canvas extends Component {
 
   componentDidMount() {
     this.setState({width:this.refs.canvas.clientWidth})
-    this.updateDimensions();
+    this.updateDimensions()
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
 
@@ -34,8 +37,11 @@ export class Canvas extends Component {
 
     addYaxis = () => {this.props.addYaxis(this.refs.canvas.clientHeight)};
     minusYaxis = () => this.props.minusYaxis(this.refs.canvas.clientHeight);
+    resizeYaxis = () => this.props.resizeYaxis(this.refs.canvas.clientHeight);
+    
     addXaxis = () => this.props.addXaxis(this.refs.canvas.clientWidth);
     minusXaxis = () => this.props.minusXaxis(this.refs.canvas.clientWidth);
+    resizeXaxis = () => this.props.resizeXaxis(this.refs.canvas.clientWidth);
       
 
     render() {
@@ -50,7 +56,7 @@ export class Canvas extends Component {
           height={this.state.height}
         />
         </div>
-        x-axis
+        <div className='xAxisLabel'>x-axis</div>
         <div className='controllPannel'>
           <div className='button up' onClick={this.minusYaxis} onKeyDown={this.minusYaxis} role='button'>UP</div>
           <div className='button down' onClick={this.addYaxis} onKeyDown={this.addYaxis} role='button'>DOWN</div>
@@ -89,6 +95,11 @@ export class Canvas extends Component {
                   color:#26282E;
               }
 
+              .xAxisLabel{
+                  text-align: right;
+                  width: 70%;
+              }
+
               .button {
                 margin: 0.1em;
                 border-radius: 0.1em;
@@ -109,5 +120,5 @@ export class Canvas extends Component {
 }
 
 export default connect(state => ({ yAxisValue: state.yAxisValue, xAxisValue: state.xAxisValue }), {
-  addYaxis, minusYaxis, addXaxis, minusXaxis
+  addYaxis, minusYaxis, addXaxis, minusXaxis, resizeXaxis, resizeYaxis
 })(Canvas);

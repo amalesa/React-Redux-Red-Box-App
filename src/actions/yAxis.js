@@ -10,3 +10,8 @@ export const minusYaxis = height => ({
         height
     });
 
+    export const resizeYaxis = height => ({
+        type: constants.RESIZE_Y_AXIS,
+        height
+    });
+

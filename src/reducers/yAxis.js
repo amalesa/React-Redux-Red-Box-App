@@ -12,6 +12,9 @@ const yAxisValue = (state = 0, action) => {
     case constants.MINUS_Y_AXIS:
       yAxisValue = (state - 10) < 0 ? 0 : state - 10;
       break;
+      case constants.RESIZE_Y_AXIS:
+      yAxisValue = state > (action.height - 10) ? action.height - 10 : state;
+      break;
     default:
       yAxisValue = parseInt(read_cookie(Y_AXIS_COOKIE), 10) || state;
       break;
