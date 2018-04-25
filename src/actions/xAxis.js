@@ -10,3 +10,8 @@ export const minusXaxis = width => ({
   width
 });
 
+export const resizeXaxis = width => ({
+  type: constants.RESIZE_X_AXIS,
+  width
+});
+

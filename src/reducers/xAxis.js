@@ -12,6 +12,9 @@ const xAxisValue = (state = 0, action) => {
     case constants.MINUS_X_AXIS:
       xAxisValue = (state - 10) < 0 ? 0 : state - 10;
       break;
+    case constants.RESIZE_X_AXIS:
+      xAxisValue = state > (action.width - 10) ? action.width - 10 : state
+      break;
     default:
       xAxisValue = parseInt(read_cookie(X_AXIS_COOKIE), 10) || state;
       break;

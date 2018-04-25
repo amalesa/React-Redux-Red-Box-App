@@ -20,14 +20,16 @@ const ref = {
   }
 }
 
-const canvas = shallow(<Canvas {...ref} {...props} />);
+const state = {
+      yAxisValue: 0,
+      xAxisValue: 0,
+      width:null
+    }
+
+const canvas = shallow(<Canvas {...ref} {...props} {...state}/>);
 
 describe('<Canvas />', () => {
   it('renders', () => {
     expect(canvas).toMatchSnapshot();
-  });
-
-  it('displays the axis from props', () => {
-    expect(canvas.find('.redBoxText').text()).toEqual('y: 0, x: 0');
   });
 });
